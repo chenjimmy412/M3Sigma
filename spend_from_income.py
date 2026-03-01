@@ -5,22 +5,40 @@
 # -----------------------------
 
 def y1_raw(income: float) -> float:
-    # Male polynomial (% of total spend)
-    return (
-        -2.73877e-14 * income**3
-        + 5.19418e-9 * income**2
-        - 0.000312357 * income
-        + 21.16669
-    )
+    # Male discrete buckets (% of total spend)
+    # Closest to 14144
+    if income < 21216:
+        return 18.0
+    # Closest to 28288
+    elif income < 36244:
+        return 15.0
+    # Closest to 44200
+    elif income < 54782:
+        return 16.0
+    # Closest to 65364
+    elif income < 94848:
+        return 15.0
+    # Closest to 124332
+    else:
+        return 10.0
 
 def y2_raw(income: float) -> float:
-    # Female polynomial (% of total spend)
-    return (
-        2.86414e-15 * income**3
-        + 3.22389e-11 * income**2
-        - 0.0000768504 * income
-        + 8.57593
-    )
+    # Female discrete buckets (% of total spend)
+    # Closest to 14144
+    if income < 21216:
+        return 7.0
+    # Closest to 28288
+    elif income < 36244:
+        return 8.0
+    # Closest to 44200
+    elif income < 54782:
+        return 4.0
+    # Closest to 65364
+    elif income < 94848:
+        return 5.0
+    # Closest to 124332
+    else:
+        return 5.0
 
 # ---- Calibration targets from the regression table
 TARGET_MALE_25_44 = 5.76
@@ -127,4 +145,4 @@ if __name__ == "__main__":
 
 
 
-print(expected_annual_gambling_spend(107874,"25-44","male"))
+print(expected_annual_gambling_spend(38000,"25-44","male"))
