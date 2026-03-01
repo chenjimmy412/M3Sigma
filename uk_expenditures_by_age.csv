@@ -1,0 +1,451 @@
+age_group,quintile,category,amount_usd,unit
+Age < 30,Lowest 20%,Food & non-alcoholic drinks,47.385,weekly
+Age < 30,Second 20%,Food & non-alcoholic drinks,48.735,weekly
+Age < 30,Third 20%,Food & non-alcoholic drinks,71.685,weekly
+Age < 30,Fourth 20%,Food & non-alcoholic drinks,75.465,weekly
+Age < 30,Highest 20%,Food & non-alcoholic drinks,78.84,weekly
+Age < 30,All,Food & non-alcoholic drinks,66.015,weekly
+Age < 30,Lowest 20%,Clothing & footwear,7.695,weekly
+Age < 30,Second 20%,Clothing & footwear,13.77,weekly
+Age < 30,Third 20%,Clothing & footwear,20.79,weekly
+Age < 30,Fourth 20%,Clothing & footwear,19.71,weekly
+Age < 30,Highest 20%,Clothing & footwear,24.165,weekly
+Age < 30,All,Clothing & footwear,17.82,weekly
+Age < 30,Lowest 20%,"Housing(net)², fuel & power",183.6,weekly
+Age < 30,Second 20%,"Housing(net)², fuel & power",193.995,weekly
+Age < 30,Third 20%,"Housing(net)², fuel & power",231.255,weekly
+Age < 30,Fourth 20%,"Housing(net)², fuel & power",213.84,weekly
+Age < 30,Highest 20%,"Housing(net)², fuel & power",357.345,weekly
+Age < 30,All,"Housing(net)², fuel & power",234.225,weekly
+Age < 30,Lowest 20%,Household goods & services,17.82,weekly
+Age < 30,Second 20%,Household goods & services,33.21,weekly
+Age < 30,Third 20%,Household goods & services,29.565,weekly
+Age < 30,Fourth 20%,Household goods & services,49.14,weekly
+Age < 30,Highest 20%,Household goods & services,42.255,weekly
+Age < 30,All,Household goods & services,35.505,weekly
+Age < 30,Lowest 20%,Health,5.13,weekly
+Age < 30,Second 20%,Health,5.13,weekly
+Age < 30,Third 20%,Health,5.13,weekly
+Age < 30,Fourth 20%,Health,5.13,weekly
+Age < 30,Highest 20%,Health,5.13,weekly
+Age < 30,All,Health,5.13,weekly
+Age < 30,Lowest 20%,Transport,25.785,weekly
+Age < 30,Second 20%,Transport,62.775,weekly
+Age < 30,Third 20%,Transport,83.16,weekly
+Age < 30,Fourth 20%,Transport,122.175,weekly
+Age < 30,Highest 20%,Transport,145.8,weekly
+Age < 30,All,Transport,90.99,weekly
+Age < 30,Lowest 20%,Communication,18.225,weekly
+Age < 30,Second 20%,Communication,23.895,weekly
+Age < 30,Third 20%,Communication,26.46,weekly
+Age < 30,Fourth 20%,Communication,31.185,weekly
+Age < 30,Highest 20%,Communication,27.27,weekly
+Age < 30,All,Communication,26.19,weekly
+Age < 30,Lowest 20%,Recreation & culture,26.865,weekly
+Age < 30,Second 20%,Recreation & culture,36.72,weekly
+Age < 30,Third 20%,Recreation & culture,50.49,weekly
+Age < 30,Fourth 20%,Recreation & culture,83.43,weekly
+Age < 30,Highest 20%,Recreation & culture,87.615,weekly
+Age < 30,All,Recreation & culture,59.13,weekly
+Age < 30,Lowest 20%,Education,9.6,weekly
+Age < 30,Second 20%,Education,9.6,weekly
+Age < 30,Third 20%,Education,9.6,weekly
+Age < 30,Fourth 20%,Education,9.6,weekly
+Age < 30,Highest 20%,Education,9.6,weekly
+Age < 30,All,Education,9.6,weekly
+Age < 30,Lowest 20%,Restaurants & hotels,17.55,weekly
+Age < 30,Second 20%,Restaurants & hotels,25.11,weekly
+Age < 30,Third 20%,Restaurants & hotels,43.335,weekly
+Age < 30,Fourth 20%,Restaurants & hotels,61.29,weekly
+Age < 30,Highest 20%,Restaurants & hotels,108.54,weekly
+Age < 30,All,Restaurants & hotels,51.57,weekly
+Age < 30,Lowest 20%,Miscellaneous goods & services,16.74,weekly
+Age < 30,Second 20%,Miscellaneous goods & services,37.8,weekly
+Age < 30,Third 20%,Miscellaneous goods & services,47.25,weekly
+Age < 30,Fourth 20%,Miscellaneous goods & services,54.54,weekly
+Age < 30,Highest 20%,Miscellaneous goods & services,52.785,weekly
+Age < 30,All,Miscellaneous goods & services,44.01,weekly
+Age < 30,Lowest 20%,Other expenditure items,20.25,weekly
+Age < 30,Second 20%,Other expenditure items,48.06,weekly
+Age < 30,Third 20%,Other expenditure items,73.71,weekly
+Age < 30,Fourth 20%,Other expenditure items,107.73,weekly
+Age < 30,Highest 20%,Other expenditure items,147.825,weekly
+Age < 30,All,Other expenditure items,82.08,weekly
+Age < 30,Lowest 20%,Weekly Necessary Expenses,280.125,weekly
+Age < 30,Second 20%,Weekly Necessary Expenses,334.53,weekly
+Age < 30,Third 20%,Weekly Necessary Expenses,417.69,weekly
+Age < 30,Fourth 20%,Weekly Necessary Expenses,447.795,weekly
+Age < 30,Highest 20%,Weekly Necessary Expenses,614.385,weekly
+Age < 30,All,Weekly Necessary Expenses,422.55,weekly
+Age < 30,Lowest 20%,Weekly Necessary Expenses,280.125,weekly
+Age < 30,Second 20%,Weekly Necessary Expenses,334.53,weekly
+Age < 30,Third 20%,Weekly Necessary Expenses,417.69,weekly
+Age < 30,Fourth 20%,Weekly Necessary Expenses,447.795,weekly
+Age < 30,Highest 20%,Weekly Necessary Expenses,614.385,weekly
+Age < 30,All,Weekly Necessary Expenses,422.55,weekly
+Age < 30,Lowest 20%,Yearly Necessary Expenses,14566.5,yearly
+Age < 30,Second 20%,Yearly Necessary Expenses,17395.56,yearly
+Age < 30,Third 20%,Yearly Necessary Expenses,21719.88,yearly
+Age < 30,Fourth 20%,Yearly Necessary Expenses,23285.34,yearly
+Age < 30,Highest 20%,Yearly Necessary Expenses,31948.02,yearly
+Age < 30,All,Yearly Necessary Expenses,21972.6,yearly
+Age 30-49,Lowest 20%,Food & non-alcoholic drinks,61.695,weekly
+Age 30-49,Second 20%,Food & non-alcoholic drinks,77.355,weekly
+Age 30-49,Third 20%,Food & non-alcoholic drinks,93.555,weekly
+Age 30-49,Fourth 20%,Food & non-alcoholic drinks,102.87,weekly
+Age 30-49,Highest 20%,Food & non-alcoholic drinks,117.855,weekly
+Age 30-49,All,Food & non-alcoholic drinks,96.795,weekly
+Age 30-49,Lowest 20%,Clothing & footwear,14.85,weekly
+Age 30-49,Second 20%,Clothing & footwear,22.005,weekly
+Age 30-49,Third 20%,Clothing & footwear,26.19,weekly
+Age 30-49,Fourth 20%,Clothing & footwear,32.67,weekly
+Age 30-49,Highest 20%,Clothing & footwear,37.665,weekly
+Age 30-49,All,Clothing & footwear,29.16,weekly
+Age 30-49,Lowest 20%,"Housing(net)², fuel & power",140.13,weekly
+Age 30-49,Second 20%,"Housing(net)², fuel & power",179.55,weekly
+Age 30-49,Third 20%,"Housing(net)², fuel & power",168.345,weekly
+Age 30-49,Fourth 20%,"Housing(net)², fuel & power",148.77,weekly
+Age 30-49,Highest 20%,"Housing(net)², fuel & power",170.64,weekly
+Age 30-49,All,"Housing(net)², fuel & power",162.945,weekly
+Age 30-49,Lowest 20%,Household goods & services,22.68,weekly
+Age 30-49,Second 20%,Household goods & services,32.805,weekly
+Age 30-49,Third 20%,Household goods & services,37.26,weekly
+Age 30-49,Fourth 20%,Household goods & services,48.465,weekly
+Age 30-49,Highest 20%,Household goods & services,77.355,weekly
+Age 30-49,All,Household goods & services,49.275,weekly
+Age 30-49,Lowest 20%,Health,9.045,weekly
+Age 30-49,Second 20%,Health,9.045,weekly
+Age 30-49,Third 20%,Health,9.045,weekly
+Age 30-49,Fourth 20%,Health,9.045,weekly
+Age 30-49,Highest 20%,Health,9.045,weekly
+Age 30-49,All,Health,9.045,weekly
+Age 30-49,Lowest 20%,Transport,39.96,weekly
+Age 30-49,Second 20%,Transport,68.985,weekly
+Age 30-49,Third 20%,Transport,99.9,weekly
+Age 30-49,Fourth 20%,Transport,130.95,weekly
+Age 30-49,Highest 20%,Transport,181.035,weekly
+Age 30-49,All,Transport,119.34,weekly
+Age 30-49,Lowest 20%,Communication,20.52,weekly
+Age 30-49,Second 20%,Communication,25.11,weekly
+Age 30-49,Third 20%,Communication,31.995,weekly
+Age 30-49,Fourth 20%,Communication,32.535,weekly
+Age 30-49,Highest 20%,Communication,35.235,weekly
+Age 30-49,All,Communication,30.78,weekly
+Age 30-49,Lowest 20%,Recreation & culture,27.945,weekly
+Age 30-49,Second 20%,Recreation & culture,47.79,weekly
+Age 30-49,Third 20%,Recreation & culture,67.635,weekly
+Age 30-49,Fourth 20%,Recreation & culture,89.235,weekly
+Age 30-49,Highest 20%,Recreation & culture,151.335,weekly
+Age 30-49,All,Recreation & culture,89.37,weekly
+Age 30-49,Lowest 20%,Education,9.6,weekly
+Age 30-49,Second 20%,Education,9.6,weekly
+Age 30-49,Third 20%,Education,9.6,weekly
+Age 30-49,Fourth 20%,Education,9.6,weekly
+Age 30-49,Highest 20%,Education,9.6,weekly
+Age 30-49,All,Education,9.6,weekly
+Age 30-49,Lowest 20%,Restaurants & hotels,20.52,weekly
+Age 30-49,Second 20%,Restaurants & hotels,27.945,weekly
+Age 30-49,Third 20%,Restaurants & hotels,45.765,weekly
+Age 30-49,Fourth 20%,Restaurants & hotels,61.02,weekly
+Age 30-49,Highest 20%,Restaurants & hotels,97.2,weekly
+Age 30-49,All,Restaurants & hotels,58.725,weekly
+Age 30-49,Lowest 20%,Miscellaneous goods & services,23.49,weekly
+Age 30-49,Second 20%,Miscellaneous goods & services,39.555,weekly
+Age 30-49,Third 20%,Miscellaneous goods & services,46.845,weekly
+Age 30-49,Fourth 20%,Miscellaneous goods & services,63.045,weekly
+Age 30-49,Highest 20%,Miscellaneous goods & services,100.305,weekly
+Age 30-49,All,Miscellaneous goods & services,62.505,weekly
+Age 30-49,Lowest 20%,Other expenditure items,38.475,weekly
+Age 30-49,Second 20%,Other expenditure items,63.045,weekly
+Age 30-49,Third 20%,Other expenditure items,97.74,weekly
+Age 30-49,Fourth 20%,Other expenditure items,138.24,weekly
+Age 30-49,Highest 20%,Other expenditure items,219.51,weekly
+Age 30-49,All,Other expenditure items,130.68,weekly
+Age 30-49,Lowest 20%,Weekly Necessary Expenses,271.35,weekly
+Age 30-49,Second 20%,Weekly Necessary Expenses,360.045,weekly
+Age 30-49,Third 20%,Weekly Necessary Expenses,402.84,weekly
+Age 30-49,Fourth 20%,Weekly Necessary Expenses,424.17,weekly
+Age 30-49,Highest 20%,Weekly Necessary Expenses,513.81,weekly
+Age 30-49,All,Weekly Necessary Expenses,418.905,weekly
+Age 30-49,Lowest 20%,Weekly Necessary Expenses,271.35,weekly
+Age 30-49,Second 20%,Weekly Necessary Expenses,360.045,weekly
+Age 30-49,Third 20%,Weekly Necessary Expenses,402.84,weekly
+Age 30-49,Fourth 20%,Weekly Necessary Expenses,424.17,weekly
+Age 30-49,Highest 20%,Weekly Necessary Expenses,513.81,weekly
+Age 30-49,All,Weekly Necessary Expenses,418.905,weekly
+Age 30-49,Lowest 20%,Yearly Necessary Expenses,14110.2,yearly
+Age 30-49,Second 20%,Yearly Necessary Expenses,18722.34,yearly
+Age 30-49,Third 20%,Yearly Necessary Expenses,20947.68,yearly
+Age 30-49,Fourth 20%,Yearly Necessary Expenses,22056.84,yearly
+Age 30-49,Highest 20%,Yearly Necessary Expenses,26718.12,yearly
+Age 30-49,All,Yearly Necessary Expenses,21783.06,yearly
+Age 50-64,Lowest 20%,Food & non-alcoholic drinks,54.27,weekly
+Age 50-64,Second 20%,Food & non-alcoholic drinks,76.68,weekly
+Age 50-64,Third 20%,Food & non-alcoholic drinks,91.8,weekly
+Age 50-64,Fourth 20%,Food & non-alcoholic drinks,105.705,weekly
+Age 50-64,Highest 20%,Food & non-alcoholic drinks,133.11,weekly
+Age 50-64,All,Food & non-alcoholic drinks,95.58,weekly
+Age 50-64,Lowest 20%,Clothing & footwear,8.235,weekly
+Age 50-64,Second 20%,Clothing & footwear,19.17,weekly
+Age 50-64,Third 20%,Clothing & footwear,22.41,weekly
+Age 50-64,Fourth 20%,Clothing & footwear,28.755,weekly
+Age 50-64,Highest 20%,Clothing & footwear,44.55,weekly
+Age 50-64,All,Clothing & footwear,26.055,weekly
+Age 50-64,Lowest 20%,"Housing(net)², fuel & power",101.925,weekly
+Age 50-64,Second 20%,"Housing(net)², fuel & power",122.985,weekly
+Age 50-64,Third 20%,"Housing(net)², fuel & power",125.28,weekly
+Age 50-64,Fourth 20%,"Housing(net)², fuel & power",132.435,weekly
+Age 50-64,Highest 20%,"Housing(net)², fuel & power",141.345,weekly
+Age 50-64,All,"Housing(net)², fuel & power",126.09,weekly
+Age 50-64,Lowest 20%,Household goods & services,28.485,weekly
+Age 50-64,Second 20%,Household goods & services,44.415,weekly
+Age 50-64,Third 20%,Household goods & services,51.705,weekly
+Age 50-64,Fourth 20%,Household goods & services,57.51,weekly
+Age 50-64,Highest 20%,Household goods & services,81.81,weekly
+Age 50-64,All,Household goods & services,54.945,weekly
+Age 50-64,Lowest 20%,Health,13.095,weekly
+Age 50-64,Second 20%,Health,13.095,weekly
+Age 50-64,Third 20%,Health,13.095,weekly
+Age 50-64,Fourth 20%,Health,13.095,weekly
+Age 50-64,Highest 20%,Health,13.095,weekly
+Age 50-64,All,Health,13.095,weekly
+Age 50-64,Lowest 20%,Transport,49.41,weekly
+Age 50-64,Second 20%,Transport,81.945,weekly
+Age 50-64,Third 20%,Transport,115.83,weekly
+Age 50-64,Fourth 20%,Transport,161.19,weekly
+Age 50-64,Highest 20%,Transport,232.74,weekly
+Age 50-64,All,Transport,136.35,weekly
+Age 50-64,Lowest 20%,Communication,18.9,weekly
+Age 50-64,Second 20%,Communication,25.38,weekly
+Age 50-64,Third 20%,Communication,29.7,weekly
+Age 50-64,Fourth 20%,Communication,36.45,weekly
+Age 50-64,Highest 20%,Communication,43.065,weekly
+Age 50-64,All,Communication,31.725,weekly
+Age 50-64,Lowest 20%,Recreation & culture,41.715,weekly
+Age 50-64,Second 20%,Recreation & culture,64.395,weekly
+Age 50-64,Third 20%,Recreation & culture,94.095,weekly
+Age 50-64,Fourth 20%,Recreation & culture,108.54,weekly
+Age 50-64,Highest 20%,Recreation & culture,176.175,weekly
+Age 50-64,All,Recreation & culture,103.275,weekly
+Age 50-64,Lowest 20%,Education,9.6,weekly
+Age 50-64,Second 20%,Education,9.6,weekly
+Age 50-64,Third 20%,Education,9.6,weekly
+Age 50-64,Fourth 20%,Education,9.6,weekly
+Age 50-64,Highest 20%,Education,9.6,weekly
+Age 50-64,All,Education,9.6,weekly
+Age 50-64,Lowest 20%,Restaurants & hotels,21.465,weekly
+Age 50-64,Second 20%,Restaurants & hotels,36.99,weekly
+Age 50-64,Third 20%,Restaurants & hotels,50.355,weekly
+Age 50-64,Fourth 20%,Restaurants & hotels,66.555,weekly
+Age 50-64,Highest 20%,Restaurants & hotels,110.565,weekly
+Age 50-64,All,Restaurants & hotels,61.155,weekly
+Age 50-64,Lowest 20%,Miscellaneous goods & services,31.185,weekly
+Age 50-64,Second 20%,Miscellaneous goods & services,45.495,weekly
+Age 50-64,Third 20%,Miscellaneous goods & services,50.625,weekly
+Age 50-64,Fourth 20%,Miscellaneous goods & services,64.8,weekly
+Age 50-64,Highest 20%,Miscellaneous goods & services,96.795,weekly
+Age 50-64,All,Miscellaneous goods & services,60.615,weekly
+Age 50-64,Lowest 20%,Other expenditure items,46.98,weekly
+Age 50-64,Second 20%,Other expenditure items,69.39,weekly
+Age 50-64,Third 20%,Other expenditure items,95.715,weekly
+Age 50-64,Fourth 20%,Other expenditure items,121.23,weekly
+Age 50-64,Highest 20%,Other expenditure items,191.16,weekly
+Age 50-64,All,Other expenditure items,111.51,weekly
+Age 50-64,Lowest 20%,Weekly Necessary Expenses,237.6,weekly
+Age 50-64,Second 20%,Weekly Necessary Expenses,320.085,weekly
+Age 50-64,Third 20%,Weekly Necessary Expenses,375.705,weekly
+Age 50-64,Fourth 20%,Weekly Necessary Expenses,448.875,weekly
+Age 50-64,Highest 20%,Weekly Necessary Expenses,563.355,weekly
+Age 50-64,All,Weekly Necessary Expenses,402.84,weekly
+Age 50-64,Lowest 20%,Weekly Necessary Expenses,237.6,weekly
+Age 50-64,Second 20%,Weekly Necessary Expenses,320.085,weekly
+Age 50-64,Third 20%,Weekly Necessary Expenses,375.705,weekly
+Age 50-64,Fourth 20%,Weekly Necessary Expenses,448.875,weekly
+Age 50-64,Highest 20%,Weekly Necessary Expenses,563.355,weekly
+Age 50-64,All,Weekly Necessary Expenses,402.84,weekly
+Age 50-64,Lowest 20%,Yearly Necessary Expenses,12355.2,yearly
+Age 50-64,Second 20%,Yearly Necessary Expenses,16644.42,yearly
+Age 50-64,Third 20%,Yearly Necessary Expenses,19536.66,yearly
+Age 50-64,Fourth 20%,Yearly Necessary Expenses,23341.5,yearly
+Age 50-64,Highest 20%,Yearly Necessary Expenses,29294.46,yearly
+Age 50-64,All,Yearly Necessary Expenses,20947.68,yearly
+Age 65-74,Lowest 20%,Food & non-alcoholic drinks,57.24,weekly
+Age 65-74,Second 20%,Food & non-alcoholic drinks,76.95,weekly
+Age 65-74,Third 20%,Food & non-alcoholic drinks,90.18,weekly
+Age 65-74,Fourth 20%,Food & non-alcoholic drinks,106.38,weekly
+Age 65-74,Highest 20%,Food & non-alcoholic drinks,118.8,weekly
+Age 65-74,All,Food & non-alcoholic drinks,81.54,weekly
+Age 65-74,Lowest 20%,Clothing & footwear,9.72,weekly
+Age 65-74,Second 20%,Clothing & footwear,15.93,weekly
+Age 65-74,Third 20%,Clothing & footwear,24.975,weekly
+Age 65-74,Fourth 20%,Clothing & footwear,26.19,weekly
+Age 65-74,Highest 20%,Clothing & footwear,34.83,weekly
+Age 65-74,All,Clothing & footwear,19.035,weekly
+Age 65-74,Lowest 20%,"Housing(net)², fuel & power",81.27,weekly
+Age 65-74,Second 20%,"Housing(net)², fuel & power",95.31,weekly
+Age 65-74,Third 20%,"Housing(net)², fuel & power",102.465,weekly
+Age 65-74,Fourth 20%,"Housing(net)², fuel & power",111.105,weekly
+Age 65-74,Highest 20%,"Housing(net)², fuel & power",132.975,weekly
+Age 65-74,All,"Housing(net)², fuel & power",98.01,weekly
+Age 65-74,Lowest 20%,Household goods & services,26.46,weekly
+Age 65-74,Second 20%,Household goods & services,48.06,weekly
+Age 65-74,Third 20%,Household goods & services,50.355,weekly
+Age 65-74,Fourth 20%,Household goods & services,69.795,weekly
+Age 65-74,Highest 20%,Household goods & services,138.78,weekly
+Age 65-74,All,Household goods & services,52.11,weekly
+Age 65-74,Lowest 20%,Health,15.39,weekly
+Age 65-74,Second 20%,Health,15.39,weekly
+Age 65-74,Third 20%,Health,15.39,weekly
+Age 65-74,Fourth 20%,Health,15.39,weekly
+Age 65-74,Highest 20%,Health,15.39,weekly
+Age 65-74,All,Health,15.39,weekly
+Age 65-74,Lowest 20%,Transport,35.505,weekly
+Age 65-74,Second 20%,Transport,75.33,weekly
+Age 65-74,Third 20%,Transport,119.34,weekly
+Age 65-74,Fourth 20%,Transport,137.295,weekly
+Age 65-74,Highest 20%,Transport,234.225,weekly
+Age 65-74,All,Transport,94.635,weekly
+Age 65-74,Lowest 20%,Communication,17.955,weekly
+Age 65-74,Second 20%,Communication,23.22,weekly
+Age 65-74,Third 20%,Communication,27.945,weekly
+Age 65-74,Fourth 20%,Communication,39.015,weekly
+Age 65-74,Highest 20%,Communication,39.825,weekly
+Age 65-74,All,Communication,26.46,weekly
+Age 65-74,Lowest 20%,Recreation & culture,48.465,weekly
+Age 65-74,Second 20%,Recreation & culture,72.09,weekly
+Age 65-74,Third 20%,Recreation & culture,115.29,weekly
+Age 65-74,Fourth 20%,Recreation & culture,120.555,weekly
+Age 65-74,Highest 20%,Recreation & culture,212.355,weekly
+Age 65-74,All,Recreation & culture,92.745,weekly
+Age 65-74,Lowest 20%,Education,9.6,weekly
+Age 65-74,Second 20%,Education,9.6,weekly
+Age 65-74,Third 20%,Education,9.6,weekly
+Age 65-74,Fourth 20%,Education,9.6,weekly
+Age 65-74,Highest 20%,Education,9.6,weekly
+Age 65-74,All,Education,9.6,weekly
+Age 65-74,Lowest 20%,Restaurants & hotels,18.36,weekly
+Age 65-74,Second 20%,Restaurants & hotels,37.125,weekly
+Age 65-74,Third 20%,Restaurants & hotels,60.48,weekly
+Age 65-74,Fourth 20%,Restaurants & hotels,89.505,weekly
+Age 65-74,Highest 20%,Restaurants & hotels,139.185,weekly
+Age 65-74,All,Restaurants & hotels,52.38,weekly
+Age 65-74,Lowest 20%,Miscellaneous goods & services,26.73,weekly
+Age 65-74,Second 20%,Miscellaneous goods & services,41.445,weekly
+Age 65-74,Third 20%,Miscellaneous goods & services,61.02,weekly
+Age 65-74,Fourth 20%,Miscellaneous goods & services,68.175,weekly
+Age 65-74,Highest 20%,Miscellaneous goods & services,125.82,weekly
+Age 65-74,All,Miscellaneous goods & services,51.84,weekly
+Age 65-74,Lowest 20%,Other expenditure items,42.66,weekly
+Age 65-74,Second 20%,Other expenditure items,60.48,weekly
+Age 65-74,Third 20%,Other expenditure items,80.055,weekly
+Age 65-74,Fourth 20%,Other expenditure items,125.415,weekly
+Age 65-74,Highest 20%,Other expenditure items,200.205,weekly
+Age 65-74,All,Other expenditure items,80.19,weekly
+Age 65-74,Lowest 20%,Weekly Necessary Expenses,207.36,weekly
+Age 65-74,Second 20%,Weekly Necessary Expenses,286.2,weekly
+Age 65-74,Third 20%,Weekly Necessary Expenses,355.32,weekly
+Age 65-74,Fourth 20%,Weekly Necessary Expenses,409.185,weekly
+Age 65-74,Highest 20%,Weekly Necessary Expenses,541.215,weekly
+Age 65-74,All,Weekly Necessary Expenses,316.035,weekly
+Age 65-74,Lowest 20%,Weekly Necessary Expenses,207.36,weekly
+Age 65-74,Second 20%,Weekly Necessary Expenses,286.2,weekly
+Age 65-74,Third 20%,Weekly Necessary Expenses,355.32,weekly
+Age 65-74,Fourth 20%,Weekly Necessary Expenses,409.185,weekly
+Age 65-74,Highest 20%,Weekly Necessary Expenses,541.215,weekly
+Age 65-74,All,Weekly Necessary Expenses,316.035,weekly
+Age 65-74,Lowest 20%,Yearly Necessary Expenses,10782.72,yearly
+Age 65-74,Second 20%,Yearly Necessary Expenses,14882.4,yearly
+Age 65-74,Third 20%,Yearly Necessary Expenses,18476.64,yearly
+Age 65-74,Fourth 20%,Yearly Necessary Expenses,21277.62,yearly
+Age 65-74,Highest 20%,Yearly Necessary Expenses,28143.18,yearly
+Age 65-74,All,Yearly Necessary Expenses,16433.82,yearly
+Age > 74,Lowest 20%,Food & non-alcoholic drinks,51.84,weekly
+Age > 74,Second 20%,Food & non-alcoholic drinks,71.415,weekly
+Age > 74,Third 20%,Food & non-alcoholic drinks,93.96,weekly
+Age > 74,Fourth 20%,Food & non-alcoholic drinks,109.35,weekly
+Age > 74,Highest 20%,Food & non-alcoholic drinks,121.905,weekly
+Age > 74,All,Food & non-alcoholic drinks,74.115,weekly
+Age > 74,Lowest 20%,Clothing & footwear,6.885,weekly
+Age > 74,Second 20%,Clothing & footwear,9.855,weekly
+Age > 74,Third 20%,Clothing & footwear,15.795,weekly
+Age > 74,Fourth 20%,Clothing & footwear,23.895,weekly
+Age > 74,Highest 20%,Clothing & footwear,22.14,weekly
+Age > 74,All,Clothing & footwear,11.745,weekly
+Age > 74,Lowest 20%,"Housing(net)², fuel & power",76.545,weekly
+Age > 74,Second 20%,"Housing(net)², fuel & power",89.235,weekly
+Age > 74,Third 20%,"Housing(net)², fuel & power",93.15,weekly
+Age > 74,Fourth 20%,"Housing(net)², fuel & power",114.075,weekly
+Age > 74,Highest 20%,"Housing(net)², fuel & power",125.415,weekly
+Age > 74,All,"Housing(net)², fuel & power",89.1,weekly
+Age > 74,Lowest 20%,Household goods & services,24.3,weekly
+Age > 74,Second 20%,Household goods & services,35.235,weekly
+Age > 74,Third 20%,Household goods & services,51.975,weekly
+Age > 74,Fourth 20%,Household goods & services,80.865,weekly
+Age > 74,Highest 20%,Household goods & services,89.1,weekly
+Age > 74,All,Household goods & services,41.175,weekly
+Age > 74,Lowest 20%,Health,14.175,weekly
+Age > 74,Second 20%,Health,14.175,weekly
+Age > 74,Third 20%,Health,14.175,weekly
+Age > 74,Fourth 20%,Health,14.175,weekly
+Age > 74,Highest 20%,Health,14.175,weekly
+Age > 74,All,Health,14.175,weekly
+Age > 74,Lowest 20%,Transport,24.84,weekly
+Age > 74,Second 20%,Transport,46.575,weekly
+Age > 74,Third 20%,Transport,72.225,weekly
+Age > 74,Fourth 20%,Transport,114.615,weekly
+Age > 74,Highest 20%,Transport,181.845,weekly
+Age > 74,All,Transport,55.485,weekly
+Age > 74,Lowest 20%,Communication,15.93,weekly
+Age > 74,Second 20%,Communication,22.545,weekly
+Age > 74,Third 20%,Communication,25.785,weekly
+Age > 74,Fourth 20%,Communication,30.24,weekly
+Age > 74,Highest 20%,Communication,34.02,weekly
+Age > 74,All,Communication,21.87,weekly
+Age > 74,Lowest 20%,Recreation & culture,29.565,weekly
+Age > 74,Second 20%,Recreation & culture,56.7,weekly
+Age > 74,Third 20%,Recreation & culture,89.37,weekly
+Age > 74,Fourth 20%,Recreation & culture,117.72,weekly
+Age > 74,Highest 20%,Recreation & culture,159.84,weekly
+Age > 74,All,Recreation & culture,62.775,weekly
+Age > 74,Lowest 20%,Education,9.6,weekly
+Age > 74,Second 20%,Education,9.6,weekly
+Age > 74,Third 20%,Education,9.6,weekly
+Age > 74,Fourth 20%,Education,9.6,weekly
+Age > 74,Highest 20%,Education,9.6,weekly
+Age > 74,All,Education,9.6,weekly
+Age > 74,Lowest 20%,Restaurants & hotels,12.42,weekly
+Age > 74,Second 20%,Restaurants & hotels,24.975,weekly
+Age > 74,Third 20%,Restaurants & hotels,47.25,weekly
+Age > 74,Fourth 20%,Restaurants & hotels,70.47,weekly
+Age > 74,Highest 20%,Restaurants & hotels,71.82,weekly
+Age > 74,All,Restaurants & hotels,30.915,weekly
+Age > 74,Lowest 20%,Miscellaneous goods & services,27.0,weekly
+Age > 74,Second 20%,Miscellaneous goods & services,41.85,weekly
+Age > 74,Third 20%,Miscellaneous goods & services,58.995,weekly
+Age > 74,Fourth 20%,Miscellaneous goods & services,112.05,weekly
+Age > 74,Highest 20%,Miscellaneous goods & services,130.68,weekly
+Age > 74,All,Miscellaneous goods & services,50.22,weekly
+Age > 74,Lowest 20%,Other expenditure items,37.26,weekly
+Age > 74,Second 20%,Other expenditure items,66.69,weekly
+Age > 74,Third 20%,Other expenditure items,83.43,weekly
+Age > 74,Fourth 20%,Other expenditure items,170.37,weekly
+Age > 74,Highest 20%,Other expenditure items,261.63,weekly
+Age > 74,All,Other expenditure items,76.815,weekly
+Age > 74,Lowest 20%,Weekly Necessary Expenses,183.33,weekly
+Age > 74,Second 20%,Weekly Necessary Expenses,243.945,weekly
+Age > 74,Third 20%,Weekly Necessary Expenses,299.295,weekly
+Age > 74,Fourth 20%,Weekly Necessary Expenses,382.455,weekly
+Age > 74,Highest 20%,Weekly Necessary Expenses,477.36,weekly
+Age > 74,All,Weekly Necessary Expenses,254.745,weekly
+Age > 74,Lowest 20%,Weekly Necessary Expenses,183.33,weekly
+Age > 74,Second 20%,Weekly Necessary Expenses,243.945,weekly
+Age > 74,Third 20%,Weekly Necessary Expenses,299.295,weekly
+Age > 74,Fourth 20%,Weekly Necessary Expenses,382.455,weekly
+Age > 74,Highest 20%,Weekly Necessary Expenses,477.36,weekly
+Age > 74,All,Weekly Necessary Expenses,254.745,weekly
+Age > 74,Lowest 20%,Yearly Necessary Expenses,9533.16,yearly
+Age > 74,Second 20%,Yearly Necessary Expenses,12685.14,yearly
+Age > 74,Third 20%,Yearly Necessary Expenses,15563.34,yearly
+Age > 74,Fourth 20%,Yearly Necessary Expenses,19887.66,yearly
+Age > 74,Highest 20%,Yearly Necessary Expenses,24822.72,yearly
+Age > 74,All,Yearly Necessary Expenses,13246.74,yearly
