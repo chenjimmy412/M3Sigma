@@ -155,7 +155,7 @@ def get_normal_dist_params(age_group: str, gender: str):
     based on the given age group and gender, using the 'even_population' function.
     """
     mean = -0.09
-    p_x_greater_than_0 = even_population(age_group, gender)
+    p_x_greater_than_0 = win_population(age_group, gender)
     p_x_less_than_or_equal_0 = 1 - p_x_greater_than_0
 
     # Calculate the z-score corresponding to X=0
@@ -178,7 +178,7 @@ def get_normal_dist_params(age_group: str, gender: str):
 
     return mean, std_dev
 #based on break even percent
-def even_population(age_group, gender):
+def win_population(age_group, gender):
     gender_even = 0
 
     if gender == "male":
@@ -269,7 +269,7 @@ def calculate_gambling_outcomes(income: float, age_group: str, gender: str) -> t
     total_expected_annual_gambling_spend = expected_annual_gambling_spend(income, age_group, gender)
 
     # 2. Determine probability of winning and losing
-    probability_of_winning = even_population(age_group, gender)
+    probability_of_winning = win_population(age_group, gender)
     probability_of_losing = 1 - probability_of_winning
 
     # 3. Calculate average_amount_won_per_unit and average_amount_lost_per_unit
@@ -300,5 +300,5 @@ age_group1 = "35-49"
 gender1 = "male"
 winners_gains1, losers_losses1 = calculate_gambling_outcomes(income1, age_group1, gender1)
 print(f"For Income: {income1}, Age Group: {age_group1}, Gender: {gender1}:")
-print(f"  Total Money Gained by Winners: {winners_gains1:.2f}")
-print(f"  Total Money Lost by Losers: {losers_losses1:.2f}")
+print(f"  Total Money Gained by Winners: {winners_gains1:.2f}", "Percent winners :", win_population(age_group1, gender1))
+print(f"  Total Money Lost by Losers: {losers_losses1:.2f}", "Percent losers: ", 1 - win_population(age_group1, gender1))
