@@ -4,6 +4,8 @@
 # Output: expected annual gambling spend
 # -----------------------------
 
+#THIS SHIT IS ALL IN POUNDS, ADJUST FOR US ACCORDINGLY SNADSXNCVDSFBNERWSNVESADJF
+
 def y1_raw(income: float) -> float:
     # Male discrete buckets (% of total spend)
     # Closest to 14144
@@ -129,6 +131,23 @@ def expected_annual_gambling_spend(income: float, age_group: str, gender: str) -
     p_gamble = probability_of_gambling(income, age_group, gender)
     return income * share_fraction * p_gamble
 
+#based on percent spending 500+ in one day
+def get_risky_population(age_group, gender):
+    gender_risk = 0
+
+    if gender == "male":
+        gender_risk =  0.28
+    else:
+        gender_risk = 0.15
+
+    table_ages = {
+            "18-24": 0.25,
+    "25-44": 0.26,
+    "45-64": 0.2,
+    "65+":   0.03,
+    }
+    return 0.5 * table_ages[age_group] + 0.5 * gender_risk
+
 
 # -----------------------------
 # Sanity checks
@@ -146,3 +165,6 @@ if __name__ == "__main__":
 
 
 print(expected_annual_gambling_spend(38000,"25-44","male"))
+
+#money lost
+print(expected_annual_gambling_spend(38000,"65+","female") * (0.09 - get_risky_population("65+","female") * 0.37) )
