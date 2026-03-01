@@ -14,8 +14,8 @@ disposable_income_not_including_married = np.array([-4041.35,	5505.54, 5262.69, 
 
 #assuming everyone above 29.5 is married and everyone below is single 
 age = np.array([(25+18)/2, (34+25)/2, (44+35)/2, (54+45)/2, (64+55)/2, (74+65)/2, (78+75)/2]) #averaging age brackets, maybe make better lattr
-after_tax = np.array([ 39089.66,	  86610.93, 107334.0,   116380.62, 101939.3 ,  64889.11 , 49275.5 ])
-disposable_income = np.array([-4041.35,	9535.94, 10525.39, 14638.98, 14152.43, -2561.94, -8561.69])
+after_tax = np.array([ 39047.66,	 82254.94,	101881.89,	110383.18,	96772.53,	66360.58,	50368.04 ])
+disposable_income = np.array([991.65,	22947.94,	28563.89,	34201.18,	30047.53,	9360.58, -597.96])
 # plt.title("Age vs disposable income")
 # plt.scatter(age, disposable_income)
 # plt.show()
