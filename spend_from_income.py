@@ -5,7 +5,7 @@
 # -----------------------------
 
 #THIS SHIT IS ALL IN POUNDS, ADJUST FOR US ACCORDINGLY SNADSXNCVDSFBNERWSNVESADJF
-
+import scipy.stats as stats
 def y1_raw(income: float) -> float:
     # Male discrete buckets (% of total spend)
     # Closest to 14144
@@ -98,9 +98,9 @@ P_BASE = {
 # (proxy mapping you’re using)
 # -----------------------------
 AGE_MULTIPLIER = {
-    "18-24": 0.7332265834,
-    "25-44": 1.0,
-    "45-64": 1.1017884478,
+    "18-34": 0.7332265834,
+    "35-49": 1.0,
+    "50-64": 1.1017884478,
     "65+":   0.9228134479,
 }
 
@@ -149,6 +149,139 @@ def get_risky_population(age_group, gender):
     return 0.5 * table_ages[age_group] + 0.5 * gender_risk
 
 
+def get_normal_dist_params(age_group: str, gender: str):
+    """
+    Calculates the mean and standard deviation of the underlying normal distribution
+    based on the given age group and gender, using the 'even_population' function.
+    """
+    mean = -0.09
+    p_x_greater_than_0 = even_population(age_group, gender)
+    p_x_less_than_or_equal_0 = 1 - p_x_greater_than_0
+
+    # Calculate the z-score corresponding to X=0
+    # This z_score corresponds to X=0 in our target distribution
+    z_score_at_0 = stats.norm.ppf(p_x_less_than_or_equal_0, loc=0, scale=1)
+
+    # Calculate the standard deviation
+    if z_score_at_0 == 0:
+        if p_x_less_than_or_equal_0 == 0.5:
+            std_dev = float('inf')
+        else:
+            std_dev = 1e-9
+    elif abs(z_score_at_0) < 1e-9:
+        std_dev = float('inf')
+    else:
+        std_dev = (0 - mean) / z_score_at_0
+
+    # Standard deviation should always be non-negative
+    std_dev = abs(std_dev)
+
+    return mean, std_dev
+#based on break even percent
+def even_population(age_group, gender):
+    gender_even = 0
+
+    if gender == "male":
+        gender_even =  0.33
+    else:
+        gender_even = 0.25
+
+    table_ages = {
+            "18-34": 0.33,
+    "35-49": 0.29,
+    "50-64": 0.17,
+    "65+":   0.25,
+    }
+    return 0.5 * table_ages[age_group] + 0.5 * gender_even
+
+
+
+def amount_lost(age_group: str, gender: str) -> float:
+    """
+    Calculates the average value (expected loss) of the normal distribution
+    given that the value is less than 0 (X < 0).
+    """
+    mean, std_dev = get_normal_dist_params(age_group, gender)
+
+    if std_dev == 0:
+        # If std_dev is 0, all values are at the mean. If mean < 0, it's a loss.
+        return min(0.0, mean)
+    if std_dev == float('inf'):
+        # For infinite std_dev, the distribution is flat or ill-defined in this context.
+        # Return 0 as a safe default for a practical average.
+        return 0.0
+
+    # Z-score for the truncation point (0)
+    z_0 = (0 - mean) / std_dev
+
+    # Probability of X < 0
+    p_x_less_than_0 = stats.norm.cdf(z_0)
+
+    if p_x_less_than_0 == 0:
+        return 0.0 # No values less than 0
+
+    # Truncated mean formula E[X | X < a] = mu - sigma * (phi( (a-mu)/sigma ) / Phi( (a-mu)/sigma ))
+    truncated_mean_loss = mean - std_dev * (stats.norm.pdf(z_0) / p_x_less_than_0)
+    return truncated_mean_loss
+
+
+def amount_won(age_group: str, gender: str) -> float:
+    """
+    Calculates the average value (expected win) of the normal distribution
+    given that the value is greater than 0 (X > 0).
+    """
+    mean, std_dev = get_normal_dist_params(age_group, gender)
+
+    if std_dev == 0:
+        # If std_dev is 0, all values are at the mean. If mean > 0, it's a win.
+        return max(0.0, mean)
+    if std_dev == float('inf'):
+        # Similar logic as amount_lost, return 0 for safety.
+        return 0.0
+
+    # Z-score for the truncation point (0)
+    z_0 = (0 - mean) / std_dev
+
+    # Probability of X > 0
+    p_x_greater_than_0 = 1 - stats.norm.cdf(z_0)
+
+    if p_x_greater_than_0 == 0:
+        return 0.0 # No values greater than 0
+
+    # Truncated mean formula E[X | X > a] = mu + sigma * (phi( (a-mu)/sigma ) / (1 - Phi( (a-mu)/sigma )))
+    truncated_mean_win = mean + std_dev * (stats.norm.pdf(z_0) / p_x_greater_than_0)
+    return truncated_mean_win
+
+def calculate_gambling_outcomes(income: float, age_group: str, gender: str) -> tuple[float, float]:
+    """
+    Orchestrates the calculation of money gained by winners and money lost by losers
+    based on income, age group, and gender.
+
+    Args:
+        income (float): The individual's post-tax income.
+        age_group (str): The age group of the individual (e.g., '18-34', '35-49').
+        gender (str): The gender of the individual ('male' or 'female').
+
+    Returns:
+        (float, float): A tuple containing (total_money_gained_by_winners, total_money_lost_by_losers).
+    """
+    # 1. Calculate total_expected_annual_gambling_spend
+    total_expected_annual_gambling_spend = expected_annual_gambling_spend(income, age_group, gender)
+
+    # 2. Determine probability of winning and losing
+    probability_of_winning = even_population(age_group, gender)
+    probability_of_losing = 1 - probability_of_winning
+
+    # 3. Calculate average_amount_won_per_unit and average_amount_lost_per_unit
+    average_amount_won_per_unit = amount_won(age_group, gender)
+    average_amount_lost_per_unit = amount_lost(age_group, gender)
+
+    # 4. Compute total money gained by winners and total money lost by losers
+    total_money_gained_by_winners = total_expected_annual_gambling_spend * probability_of_winning * average_amount_won_per_unit
+    # amount_lost returns a negative value, so we take its absolute value for 'money lost'
+    total_money_lost_by_losers = total_expected_annual_gambling_spend * probability_of_losing * abs(average_amount_lost_per_unit)
+
+    return total_money_gained_by_winners, total_money_lost_by_losers
 # -----------------------------
 # Sanity checks
 # -----------------------------
@@ -157,14 +290,15 @@ if __name__ == "__main__":
     print("Male calibrated share at I_REF (%):", gambling_share_percent_calibrated(I_REF, "male"))
     print("Female calibrated share at I_REF (%):", gambling_share_percent_calibrated(I_REF, "female"))
 
-    # Example
-    print("Expected annual gambling spend:",
-          expected_annual_gambling_spend(40000, "25-44", "male"))
 
 
 
 
-print(expected_annual_gambling_spend(38000,"25-44","male"))
-
-#money lost
-print(expected_annual_gambling_spend(38000,"65+","female") * (0.09 - get_risky_population("65+","female") * 0.37) )
+# Example 1: Male, 35-49, Income 40000
+income1 = 40000.0
+age_group1 = "35-49"
+gender1 = "male"
+winners_gains1, losers_losses1 = calculate_gambling_outcomes(income1, age_group1, gender1)
+print(f"For Income: {income1}, Age Group: {age_group1}, Gender: {gender1}:")
+print(f"  Total Money Gained by Winners: {winners_gains1:.2f}")
+print(f"  Total Money Lost by Losers: {losers_losses1:.2f}")
