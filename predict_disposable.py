@@ -25,4 +25,4 @@ def predict_disposable_incomeonly(age, after_tax_income):
         w[1]
     ) * after_tax_income
 
-print(predict_disposable(23, 120_000), predict_disposable_3D(23, 120_000), predict_disposable_incomeonly(23, 120_000))
+print("age only: ", predict_disposable(23, 120_000), "age and income: ", predict_disposable_3D(23, 120_000), "income only: ", predict_disposable_incomeonly(23, 120_000))
