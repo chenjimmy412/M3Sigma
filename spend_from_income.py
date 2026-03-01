@@ -18,10 +18,60 @@ import scipy.stats as stats
 import scipy.stats as stats
 
 
+
+
+def calculate_uk_posttax_income(pretax_income: float) -> float:
+    if pretax_income < 0:
+        raise ValueError("pretax_income must be non-negative")
+
+
+    income = float(pretax_income)
+
+
+    # Personal allowance: 12,570, tapered by £1 for every £2 above £100,000.
+    if income <= 100_000:
+        personal_allowance = 12_570.0
+    else:
+        reduction = (income - 100_000.0) / 2.0
+        personal_allowance = max(0.0, 12_570.0 - reduction)
+
+
+    taxable_income = max(0.0, income - personal_allowance)
+
+
+    # Progressive tax on taxable income:
+    basic_band = 37_700.0
+    higher_band = 74_870.0
+
+
+    basic_tax = min(taxable_income, basic_band) * 0.20
+    higher_tax = min(max(taxable_income - basic_band, 0.0), higher_band) * 0.40
+    additional_tax = max(taxable_income - basic_band - higher_band, 0.0) * 0.45
+
+
+    total_tax = basic_tax + higher_tax + additional_tax
+    return income - total_tax
+
+
+
+
 # -----------------------------
-# Income → quintile mapping
+# Age share quadratic (returns a PERCENT)
+# y(age) = -0.00238169 x^2 + 0.188714 x + 0.618878
 # -----------------------------
-def income_to_quintile(income: float) -> int:
+def age_share_percent(age: float) -> float:
+    x = float(age)
+    return -0.00238169 * x**2 + 0.188714 * x + 0.618878
+
+
+
+
+# -----------------------------
+# Income buckets on POST-TAX income
+# cutoffs: 21216, 36244, 54782, 94848
+# -----------------------------
+def income_to_bucket(posttax_income: float) -> int:
+    income = float(posttax_income)
     if income < 21216:
         return 1
     elif income < 36244:
@@ -34,51 +84,73 @@ def income_to_quintile(income: float) -> int:
         return 5
 
 
+# Compatibility alias: old code calls it "quintile"
+def income_to_quintile(income: float) -> int:
+    return income_to_bucket(income)
+
+
 
 
 # -----------------------------
-# RAW income-bucket gambling share (% of income)
-# (from FIRST model)
+# Bucket rates (PERCENT) from your table
+# Ordered LOWEST -> HIGHEST bucket
+# Men:    [10, 15, 16, 15, 18]
+# Women:  [5,  5,  4,  8,  7]
+# Baseline man = male in bucket 3 => 16%
+# -----------------------------
+MEN_RATE_BY_BUCKET   = {1: 10.0, 2: 15.0, 3: 16.0, 4: 15.0, 5: 18.0}
+WOMEN_RATE_BY_BUCKET = {1: 5.0,  2: 5.0,  3: 4.0,  4: 8.0,  5: 7.0}
+BASELINE_MALE_RATE = 16.0
+
+
+
+
+def gender_income_multiplier(posttax_income: float, gender: str) -> float:
+    g = gender.strip().lower()
+    b = income_to_bucket(posttax_income)
+
+
+    if g == "male":
+        rate = MEN_RATE_BY_BUCKET[b]
+    elif g == "female":
+        rate = WOMEN_RATE_BY_BUCKET[b]
+    else:
+        raise ValueError("gender must be 'male' or 'female'")
+
+
+    return rate / BASELINE_MALE_RATE
+
+
+
+
+# -----------------------------
+# Block-1 compatibility: y1_raw / y2_raw + calibration constants
+# Block 1's gambling_share_percent_calibrated() expects:
+#   y1_raw(income), y2_raw(income), K_MALE, K_FEMALE, I_REF
 # -----------------------------
 def y1_raw(income: float) -> float:
-    # Male
-    q = income_to_quintile(income)
-    return {
-        1: 10.0,
-        2: 15.0,
-        3: 16.0,
-        4: 15.0,
-        5: 18.0,
-    }[q]
-
-
+    """Male bucket rate (PERCENT). Used by block 1 calibration."""
+    b = income_to_bucket(income)
+    return MEN_RATE_BY_BUCKET[b]
 
 
 def y2_raw(income: float) -> float:
-    # Female
-    q = income_to_quintile(income)
-    return {
-        1: 5.0,
-        2: 5.0,
-        3: 4.0,
-        4: 8.0,
-        5: 7.0,
-    }[q]
+    """Female bucket rate (PERCENT). Used by block 1 calibration."""
+    b = income_to_bucket(income)
+    return WOMEN_RATE_BY_BUCKET[b]
 
 
-
-
-# -----------------------------
-# Calibration targets
-# -----------------------------
+# ---- Calibration targets from your regression table (same as old block 2)
 TARGET_MALE_25_44 = 5.76
-TARGET_FEMALE_25_44 = 1.66
+TARGET_FEMALE_25_44 = 1.66  # (= 5.76 - 4.10)
 
 
-# Reference income (median post-tax)
+# ---- Reference income (keep your old reference post-tax income value)
 I_REF = 37874.0
 
 
+# ---- Calibration multipliers
+# (If you don't WANT calibration anymore, set K_MALE = K_FEMALE = 1.0 instead.)
 K_MALE = TARGET_MALE_25_44 / y1_raw(I_REF)
 K_FEMALE = TARGET_FEMALE_25_44 / y2_raw(I_REF)
 
@@ -86,94 +158,52 @@ K_FEMALE = TARGET_FEMALE_25_44 / y2_raw(I_REF)
 
 
 # -----------------------------
-# Calibrated gambling share (%)
+# Age-group -> representative age
+# Block 1 uses age_group strings like: "18-34", "35-49", "50-64", "65+"
 # -----------------------------
-def gambling_share_percent_calibrated(income: float, gender: str) -> float:
-    g = gender.strip().lower()
-    if g == "male":
-        return y1_raw(income) * K_MALE
-    elif g == "female":
-        return y2_raw(income) * K_FEMALE
-    else:
-        raise ValueError("gender must be 'male' or 'female'")
-
-
-
-
-# -----------------------------
-# Base probability of gambling
-# -----------------------------
-P_BASE = {
-    "male":   {1: 0.5159, 2: 0.5092, 3: 0.5532, 4: 0.6226, 5: 0.6085},
-    "female": {1: 0.3966, 2: 0.4638, 3: 0.4475, 4: 0.4989, 5: 0.4393},
+AGE_GROUP_TO_REP_AGE = {
+    "18-24": 21.0,   # optional support
+    "25-44": 34.5,   # optional support
+    "45-64": 54.5,   # optional support
+    "18-34": 26.0,
+    "35-49": 42.0,
+    "50-64": 57.0,
+    "65+":   70.0,
+    "75+":   80.0,   # optional support
 }
 
 
-
-
-AGE_MULTIPLIER = {
-    "18-34": 0.7332,
-    "35-49": 1.0,
-    "50-64": 1.1018,
-    "65+":   0.9228,
-}
-
-
-
-
-def probability_of_gambling(income: float, age_group: str, gender: str) -> float:
-    g = gender.strip().lower()
+def _rep_age_from_group(age_group: str) -> float:
     a = age_group.strip()
-
-
-    if g not in P_BASE:
-        raise ValueError("gender must be 'male' or 'female'")
-    if a not in AGE_MULTIPLIER:
-        raise ValueError("invalid age_group")
-
-
-    q = income_to_quintile(income)
-    p = P_BASE[g][q] * AGE_MULTIPLIER[a]
-
-
-    return max(0.0, min(1.0, p))
+    if a not in AGE_GROUP_TO_REP_AGE:
+        raise ValueError(
+            "age_group must be one of: "
+            + ", ".join(sorted(AGE_GROUP_TO_REP_AGE.keys()))
+        )
+    return AGE_GROUP_TO_REP_AGE[a]
 
 
 
 
 # -----------------------------
-# FINAL EXPECTED SPEND
-# (matches second model signature)
+# FINAL (block-1 compatible signature):
+# input: income (POST-tax), age_group (string), gender
+# output: expected annual gambling spend
+#
+# Uses your block-3 model:
+#   spend = posttax_income * (age_share_percent(rep_age)/100) * gender_income_multiplier(posttax, gender)
 # -----------------------------
 def expected_annual_gambling_spend(income: float, age_group: str, gender: str) -> float:
-    """
-    expected spend = income × gambling share × probability of gambling
-    """
-    share_fraction = gambling_share_percent_calibrated(income, gender) / 100.0
-    p_gamble = probability_of_gambling(income, age_group, gender)
-    return income * share_fraction * p_gamble
+    posttax = float(income)
+    rep_age = _rep_age_from_group(age_group)
 
 
+    y_percent = age_share_percent(rep_age)          # percent
+    mult = gender_income_multiplier(posttax, gender)  # unitless
 
 
-# -----------------------------
-# Sanity checks
-# -----------------------------
-if __name__ == "__main__":
-    print("Male calibrated share @ I_REF (%):",
-          gambling_share_percent_calibrated(I_REF, "male"))
-    print("Female calibrated share @ I_REF (%):",
-          gambling_share_percent_calibrated(I_REF, "female"))
-
-
-    income = 40000
-    age_group = "35-49"
-    gender = "male"
-
-
-    print("Expected annual gambling spend:",
-          expected_annual_gambling_spend(income, age_group, gender))
-
+    share_percent = y_percent * mult                # percent
+    return posttax * (share_percent / 100.0)
 
 
 
@@ -344,13 +374,7 @@ def calculate_gambling_outcomes(income: float, age_group: str, gender: str) -> t
     return total_money_gained_by_winners, total_money_lost_by_losers
 # -----------------------------
 # Sanity checks
-# -----------------------------
-if __name__ == "__main__":
-    # Should print ~5.76 and ~1.66
-    print("Male calibrated share at I_REF (%):", gambling_share_percent_calibrated(I_REF, "male"))
-    print("Female calibrated share at I_REF (%):", gambling_share_percent_calibrated(I_REF, "female"))
-
-
+# -------
 
 
 
