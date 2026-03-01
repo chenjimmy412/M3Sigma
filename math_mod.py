@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 #ANOTHER POSSIBILITY: graph neccessary income vs age and then subtract that flat amount from inputted after tax income
 
-
+#change US numbers and do UK
 
 #--legacy info
 after_tax_not_including_married = np.array([39089.66,	76376.54,	93247.69,	101475.56,	88944.01,	58507.06, 	44807.81]) 
