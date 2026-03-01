@@ -82,3 +82,4 @@ w = np.linalg.pinv(X) @ proportion
 print(w)
 plot_3d_regression(age, after_tax, proportion, w)
 
+
