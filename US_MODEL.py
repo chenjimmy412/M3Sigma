@@ -119,13 +119,11 @@ def exp_income_quad_age_reg():
         tax_val, age_val = X_data
         return a * np.exp(b * tax_val) + c * (age_val**2) + d * age_val + f
 
-    # Fit the model using your global arrays
     p0 = [-0.5, -0.00001, 0.0001, 0.01, 0.5]
     popt, _ = curve_fit(exp_quad_model, (after_tax, age), proportion, p0=p0, maxfev=10000)
     
     print("Exp/Quad 3D Weights (a, b, c, d, f):", popt)
 
-    # Plotting logic tailored for the non-linear curve_fit output
     fig = plt.figure(figsize=(10, 7))
     ax = fig.add_subplot(111, projection='3d')
     
@@ -133,7 +131,6 @@ def exp_income_quad_age_reg():
     tax_grid = np.linspace(after_tax.min(), after_tax.max(), 50)
     age_mesh, tax_mesh = np.meshgrid(age_grid, tax_grid)
     
-    # Calculate Z surface
     Z = exp_quad_model((tax_mesh, age_mesh), *popt)
     
     ax.plot_surface(age_mesh, tax_mesh, Z, alpha=0.6, cmap='viridis')
