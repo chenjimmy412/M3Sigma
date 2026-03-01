@@ -1,0 +1,130 @@
+# -----------------------------
+# Calibrated Version 2A model
+# Inputs: income (post-tax), age_group, gender
+# Output: expected annual gambling spend
+# -----------------------------
+
+def y1_raw(income: float) -> float:
+    # Male polynomial (% of total spend)
+    return (
+        -2.73877e-14 * income**3
+        + 5.19418e-9 * income**2
+        - 0.000312357 * income
+        + 21.16669
+    )
+
+def y2_raw(income: float) -> float:
+    # Female polynomial (% of total spend)
+    return (
+        2.86414e-15 * income**3
+        + 3.22389e-11 * income**2
+        - 0.0000768504 * income
+        + 8.57593
+    )
+
+# ---- Calibration targets from the regression table
+TARGET_MALE_25_44 = 5.76
+TARGET_FEMALE_25_44 = 5.76 - 4.10  # = 1.66
+
+# ---- Reference income (median British post-tax income)
+I_REF = 37874.0
+
+# ---- Calibration multipliers (constants)
+K_MALE = TARGET_MALE_25_44 / y1_raw(I_REF)
+K_FEMALE = TARGET_FEMALE_25_44 / y2_raw(I_REF)
+
+def gambling_share_percent_calibrated(income: float, gender: str) -> float:
+    """
+    Calibrated gambling spend share (% of total spend).
+    Ensures at I_REF: male 25–44 -> 5.76%, female 25–44 -> 1.66%.
+    """
+    g = gender.strip().lower()
+    if g == "male":
+        return y1_raw(income) * K_MALE
+    elif g == "female":
+        return y2_raw(income) * K_FEMALE
+    else:
+        raise ValueError("gender must be 'male' or 'female'")
+
+
+# -----------------------------
+# Income → quintile mapping
+# IMPORTANT: Replace thresholds with your spreadsheet's actual quintile cutoffs
+# -----------------------------
+def income_to_quintile(income: float) -> int:
+    if income < 21216:
+        return 1
+    elif income < 36244:
+        return 2
+    elif income < 54782:
+        return 3
+    elif income < 94848:
+        return 4
+    else:
+        return 5
+
+
+# -----------------------------
+# Base probability of gambling by (gender, income quintile)
+# Any gambling activity, last 12 months
+# -----------------------------
+P_BASE = {
+    "male":   {1: 0.51592466, 2: 0.50916265, 3: 0.55316983, 4: 0.62263690, 5: 0.60853887},
+    "female": {1: 0.39659307, 2: 0.46383624, 3: 0.44749898, 4: 0.49886290, 5: 0.43930923},
+}
+
+# -----------------------------
+# Age multiplier relative to 25–44 reference
+# (proxy mapping you’re using)
+# -----------------------------
+AGE_MULTIPLIER = {
+    "18-24": 0.7332265834,
+    "25-44": 1.0,
+    "45-64": 1.1017884478,
+    "65+":   0.9228134479,
+}
+
+def probability_of_gambling(income: float, age_group: str, gender: str) -> float:
+    g = gender.strip().lower()
+    a = age_group.strip()
+
+    if g not in P_BASE:
+        raise ValueError("gender must be 'male' or 'female'")
+    if a not in AGE_MULTIPLIER:
+        raise ValueError("age_group must be one of: '18-24', '25-44', '45-64', '65+'")
+
+    q = income_to_quintile(income)
+    base_p = P_BASE[g][q]
+    p = base_p * AGE_MULTIPLIER[a]
+
+    # Clamp to [0, 1]
+    return max(0.0, min(1.0, p))
+
+
+def expected_annual_gambling_spend(income: float, age_group: str, gender: str) -> float:
+    """
+    Version 2A:
+    expected spend = income * (calibrated share fraction) * P(gambles)
+    """
+    share_percent = gambling_share_percent_calibrated(income, gender)
+    share_fraction = share_percent / 100.0
+    p_gamble = probability_of_gambling(income, age_group, gender)
+    return income * share_fraction * p_gamble
+
+
+# -----------------------------
+# Sanity checks
+# -----------------------------
+if __name__ == "__main__":
+    # Should print ~5.76 and ~1.66
+    print("Male calibrated share at I_REF (%):", gambling_share_percent_calibrated(I_REF, "male"))
+    print("Female calibrated share at I_REF (%):", gambling_share_percent_calibrated(I_REF, "female"))
+
+    # Example
+    print("Expected annual gambling spend:",
+          expected_annual_gambling_spend(40000, "25-44", "male"))
+
+
+
+
+print(expected_annual_gambling_spend(107874,"25-44","male"))
