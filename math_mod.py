@@ -61,6 +61,7 @@ def plot_3d_regression(age, after_tax, proportion, w):
     plt.legend()
     plt.show()
 
+#use UK data to confirm linear and quadratic relationships
 X = np.stack([age ** 2, age, after_tax, np.ones_like(age)]).transpose()
 w = np.linalg.pinv(X) @ proportion
 print(w)
