@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
 
 #ANOTHER POSSIBILITY: graph neccessary income vs age and then subtract that flat amount from inputted after tax income
 
@@ -74,12 +75,76 @@ def plot_3d_regression(age, after_tax, proportion, w):
     plt.legend()
     plt.show()
 
-#use UK data to confirm linear and quadratic relationships???
-show_income_vs_proportion()
-age_prop_reg()
-X = np.stack([age ** 2, age, after_tax, np.ones_like(age)]).transpose()
-w = np.linalg.pinv(X) @ proportion
-print(w)
-plot_3d_regression(age, after_tax, proportion, w)
+
+#--- switching over to EXPONENTIAL relationship between income and disp instead of linear
+
+def show_income_vs_proportion_exp():
+    plt.title("Income vs Proportion of after tax income (state) that is disposable")
+    
+    # Define the 1D exponential decay model
+    def exp_model(x, a, b, c):
+        return a * np.exp(b * x) + c
+    
+    # Provide an initial guess [a, b, c] so the optimizer doesn't get lost
+    p0 = [-1.0, -0.00005, 0.5]
+    popt, _ = curve_fit(exp_model, after_tax, proportion, p0=p0, maxfev=10000)
+    
+    print("INCOME VS DISP PROP EXP WEIGHTS (a, b, c):", popt)
+    
+    # Plot original scatter
+    plt.scatter(after_tax, proportion, label="Actual Data")
+    
+    # Plot smooth exponential curve
+    tax_sorted = np.linspace(after_tax.min(), after_tax.max(), 100)
+    plt.plot(tax_sorted, exp_model(tax_sorted, *popt), color='red', label="Exp Fit")
+    
+    plt.legend()
+    plt.show()
+
+def linear_income_quad_age_reg(): #legacy
+    print("--- Running Original Linear(Income) / Quad(Age) 3D Regression ---")
+    
+    X = np.stack([age ** 2, age, after_tax, np.ones_like(age)]).transpose()
+    w = np.linalg.pinv(X) @ proportion
+    
+    print("Linear/Quad 3D Weights:", w)
+    
+    plot_3d_regression(age, after_tax, proportion, w)
+
+def exp_income_quad_age_reg():
+    print("--- Running New Exp(Income) / Quad(Age) 3D Regression ---")
+    
+    # Define the 3D model
+    def exp_quad_model(X_data, a, b, c, d, f):
+        tax_val, age_val = X_data
+        return a * np.exp(b * tax_val) + c * (age_val**2) + d * age_val + f
+
+    # Fit the model using your global arrays
+    p0 = [-0.5, -0.00001, 0.0001, 0.01, 0.5]
+    popt, _ = curve_fit(exp_quad_model, (after_tax, age), proportion, p0=p0, maxfev=10000)
+    
+    print("Exp/Quad 3D Weights (a, b, c, d, f):", popt)
+
+    # Plotting logic tailored for the non-linear curve_fit output
+    fig = plt.figure(figsize=(10, 7))
+    ax = fig.add_subplot(111, projection='3d')
+    
+    age_grid = np.linspace(age.min(), age.max(), 50)
+    tax_grid = np.linspace(after_tax.min(), after_tax.max(), 50)
+    age_mesh, tax_mesh = np.meshgrid(age_grid, tax_grid)
+    
+    # Calculate Z surface
+    Z = exp_quad_model((tax_mesh, age_mesh), *popt)
+    
+    ax.plot_surface(age_mesh, tax_mesh, Z, alpha=0.6, cmap='viridis')
+    ax.scatter(age, after_tax, proportion, color='red', s=50, label='Actual Data', depthshade=False)
+    
+    ax.set_xlabel('Age')
+    ax.set_ylabel('After Tax Income')
+    ax.set_zlabel('Disposable Proportion')
+    ax.set_title('Age vs. Income vs Disposable Proportion')
+    plt.legend()
+    plt.show()
 
 
+exp_income_quad_age_reg()
