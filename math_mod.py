@@ -2,10 +2,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #ANOTHER POSSIBILITY: graph neccessary income vs age and then subtract that flat amount from inputted after tax income
-after_tax = np.array([39089.66,	76376.54,	93247.69,	101475.56,	88944.01,	58507.06, 	44807.81])
-disposable_income = np.array([-4041.35,	5505.54, 5262.69, 9119.56 ,9024.01,	-3888.94 ,-8800.19])
-age = np.array([(25+18)/2, (34+25)/2, (44+35)/2, (54+45)/2, (64+55)/2, (74+65)/2, (78+75)/2]) #averaging age brackets, maybe make better lattr
 
+#--legacy info
+after_tax_not_including_married = np.array([39089.66,	76376.54,	93247.69,	101475.56,	88944.01,	58507.06, 	44807.81]) 
+disposable_income_not_including_married = np.array([-4041.35,	5505.54, 5262.69, 9119.56 ,9024.01,	-3888.94 ,-8800.19])
+
+
+
+#assuming everyone above 29.5 is married and everyone below is single 
+age = np.array([(25+18)/2, (34+25)/2, (44+35)/2, (54+45)/2, (64+55)/2, (74+65)/2, (78+75)/2]) #averaging age brackets, maybe make better lattr
+after_tax = np.array([ 39089.66,	  86610.93, 107334.0,   116380.62, 101939.3 ,  64889.11 , 49275.5 ])
+disposable_income = np.array([-4041.35,	9535.94, 10525.39, 14638.98, 14152.43, -2561.94, -8561.69])
 # plt.title("Age vs disposable income")
 # plt.scatter(age, disposable_income)
 # plt.show()
@@ -62,6 +69,7 @@ def plot_3d_regression(age, after_tax, proportion, w):
     plt.show()
 
 #use UK data to confirm linear and quadratic relationships???
+#age_prop_reg()
 X = np.stack([age ** 2, age, after_tax, np.ones_like(age)]).transpose()
 w = np.linalg.pinv(X) @ proportion
 print(w)
