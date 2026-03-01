@@ -17,11 +17,4 @@ plt.scatter(age, disposable_income/after_tax)
 #interperet age vs proportion disposable income as quartic to model mid-life dip due to children entering the house but then leaving house
 
 
-X = np.stack([age ** 4, age ** 3, age ** 2, age, np.ones_like(age)]).transpose()
-print(X)
-
-w = np.linalg.pinv(X) @ proportion
-
-plt.plot
-
 
