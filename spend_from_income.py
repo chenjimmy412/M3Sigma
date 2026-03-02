@@ -285,8 +285,8 @@ gender1 = "male"
 winners_gains1, losers_losses1 = calculate_gambling_outcomes(income1, age, age_group1, gender1)
 amount_spent = expected_annual_gambling_spend(income1, age, gender1)
 amount_lost = 0.09 * amount_spent
-print(f"For Income: {income1}, Age Group: {age_group1}, Gender: {gender1}:")
-print(f"  Total Money Gained by Winners: {winners_gains1:.2f}", "Percent winners :", win_population(age_group1, gender1))
-print(f"  Total Money Lost by Losers: {losers_losses1:.2f}", "Percent losers: ", 1 - win_population(age_group1, gender1))
-print(f"  Total Amount Spent on Gambling: {amount_spent:.2f}")
+print(f"For Income: {income1}, Age: {age}, Age Group: {age_group1}, Gender: {gender1}:")
+print(f"  Total Money Gained by Profitable people in a year: {winners_gains1:.2f}", "Percent winners :", win_population(age_group1, gender1))
+print(f"  Total Money Lost by Losers in a year: {losers_losses1:.2f}", "Percent losers: ", 1 - win_population(age_group1, gender1))
+print(f"  Total Amount Bet on Gambling: {amount_spent:.2f}")
 print(f" Total Amount Lost: {amount_lost:.2f}")
